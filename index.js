@@ -83,7 +83,7 @@ inquirer
   
     teammembers.push(blankemployee);
 
-    addHtml(blankemployee)
+    middleHtml(blankemployee)
 
    
 })
@@ -99,5 +99,51 @@ inquirer
 
 
 
+///the beginning of the html file///
+function beginningofhtml () {
+const html = `<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark  py-4" id = "blacknavbar">
+        <h2>  </h2>
+     </nav>
+ 
+     <section class="row" id="theblankpart">
+        
+            <h5>Meet the team:</h5>
+      
+
+    </section>
+
+    <section class="row">
+
+        <div class="col-12 col-md-12"> `;
+        
+
+    fs.writeFile('./finalhtml/teamgenerator.html', html )
+
+}
+
+//the middle of the html file
+
+function middleHtml () {
+
+}
+
+function endhtml () {
+    
+}
+
 
   prqu () ;
+  beginningofhtml ();

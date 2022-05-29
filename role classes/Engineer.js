@@ -2,7 +2,7 @@
 
 class Engineer {
 
-    constructor (name, id, email){
+    constructor (name, id, email, github){
         this.name = name;
         this.id = id;
         this.email = email;
@@ -24,5 +24,9 @@ class Engineer {
 
     getGithub(){
         return this.github;
+    }
+
+    getEmail(){
+        return this.email;
     }
 }

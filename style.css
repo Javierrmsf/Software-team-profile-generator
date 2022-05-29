@@ -41,3 +41,23 @@ h3 {
     background-color: red;
     color: white
 }
+
+#theblankpart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#blacknavbar {
+    background-color: black;
+}
+
+.card-body {
+    background-color: white;
+    color: black;
+}
+
+.card-header {
+    background-color: black;
+    color: white;
+}

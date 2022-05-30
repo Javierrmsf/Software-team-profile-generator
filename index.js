@@ -10,7 +10,7 @@ const Manager = require ('./role classes/Manager')
 
 const teammembers =[];
 
-const prqu = () =>
+function prqu () {
 inquirer
 
 
@@ -51,7 +51,7 @@ inquirer
 
   ])
 
-.then (function({name, id, role, email, github, office}){
+.then (function({}){
     inquirer
     .prompt([
         {
@@ -98,7 +98,7 @@ inquirer
 
 
 
-
+}
 ///the beginning of the html file///
 function beginningofhtml () {
 const html = `<!DOCTYPE html>
@@ -218,10 +218,14 @@ data =
 
 }
 
-function endhtml () {
+//function endhtml () {
 
-}
+//data =
+
+
+
+//}
 
 
   prqu () ;
-  beginningofhtml ();
+  //beginningofhtml ();

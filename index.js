@@ -136,12 +136,90 @@ const html = `<!DOCTYPE html>
 
 //the middle of the html file
 
-function middleHtml () {
+function middleHtml (employee) {
+    return new Promise (function ()
+    {
+    const employeename = employee.getName();
+    const employeerole = employee.getRole();
+    const employeeid = employee.getId();
+    const employeeemail = employee.getEmail();
+    const employeegithub = employee.getGithub();
+    const employeeofficenumber = employee.getOfficeNumber();
+    let data = ""
+    if (role === "Intern") {
+    data =          
+    ` <div class="col-12 col-sm-6 col-lg-2 mb-3">
+    <div class="card">
+      <h3 class="card-header" id="date2">
+        Javier Resines,
+        Intern 🎓
+      </h3>
+      <div class="card-body">
+        <p class="card-text">
+          <p id = "id">ID: 1</p>
+          <p id = "email"> Email: javierresines@gmail.com</p>
+          <p id = "school">School: University of thisplace</p>
+
+          
+        </p>
+   
+      </div>
+    </div>
+  </div>`
+    }
+    
+   else if (role === "Engineer") {
+   data = 
+   `          <section class="row justify-content-around">
+  
+   <div class="col-12 col-sm-6 col-lg-2 mb-3">
+     <div class="card">
+       <h3 class="card-header" id = "date0">
+       Javier Resines,
+       Engineer 👓
+       </h3>
+       <div class="card-body">
+         <p class="card-text">
+           <p id = "id">ID: 1</p>
+           <p id = "email"> Email: javierresines@gmail.com</p>
+           <p id = "Github">github: javierrm</p>
+
+
+         </p>
+
+       </div>
+     </div>
+   </div>`
+   }
+
+   else if (role === "Manager") {
+data =
+    `<div class="col-12 col-sm-6 col-lg-2 mb-3">
+    <div class="card">
+      <h3 class="card-header" id = "date1">
+        Javier Resines,
+        Manager ☕
+      </h3>
+      <div class="card-body">
+        <p class="card-text">
+          <p id = "id">ID: 1</p>
+          <p id = "email"> Email: javierresines@gmail.com</p>
+          <p id = "officenumber">office number: 1</p>
+
+        </p>
+
+      </div>
+    </div>
+  </div>`
+
+   }
+
+    })
 
 }
 
 function endhtml () {
-    
+
 }
 
 

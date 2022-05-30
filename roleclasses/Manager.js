@@ -1,12 +1,11 @@
 
+class Manager {
 
-class Engineer {
-
-    constructor (name, id, email, github){
+    constructor (name, id, email){
         this.name = name;
         this.id = id;
         this.email = email;
-        this.github = github;
+        this.officenumber = this.officenumber;
     }
     
     getName() {
@@ -19,14 +18,16 @@ class Engineer {
     }
     
     getRole() {
-         return "Engineer";
+         return "Manager";
     }
 
-    getGithub(){
-        return this.github;
+    getOfficeNumber(){
+        return this.officenumber;
     }
 
     getEmail(){
         return this.email;
     }
 }
+
+module.exports = Manager;

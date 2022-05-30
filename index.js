@@ -2,13 +2,16 @@ const inquirer = require('inquirer');
 
 const fs = require('fs');
 
-const Intern = require ('./role classes/Intern')
+const Intern = require ("./roleclasses/Intern")
 
-const Engineer = require ('./role classes/Engineer')
+const Engineer = require ("./roleclasses/Engineer")
 
-const Manager = require ('./role classes/Manager')
+const Manager = require ("./roleclasses/Manager")
 
 const teammembers =[];
+
+  //beginningofhtml ();
+
 
 function prqu () {
 inquirer
@@ -58,47 +61,49 @@ inquirer
             type: 'list',
             message: "Will you add another member to the team?",
             name: 'addmoremembers',
-            choices: [yes, no, ]
+            choices: ["yes", "no", ]
            },
     ])
 
 
-})
 
-.then(function({name, id, role, email, github, office, addmoremembers}){
 
-    let blankemployee = ""
+.then(function({name, id, role, email, github, office,}){
+
+    let employee = ""
     
     if (role === "Engineer"){
-        blankemployee = new Engineer(name, id, role, email, github, office)
+        employee = new Engineer(name, id, role, email, github, office)
     }
     
     else if (role === "Manager"){
-        blankemployee = new Manager(name, id, role, email, github, office)
+        employee = new Manager(name, id, role, email, github, office)
     }
 
-    else {
-        blankemployee = new Intern(name, id, role, email, github, office)
+    else if (role === "Intern"){
+        employee = new Intern(name, id, role, email, github, office)
     }
   
-    teammembers.push(blankemployee);
+    teammembers.push(employee);
 
-    middleHtml(blankemployee)
+    middleHtml(employee)
 
    
-})
- .then(function(){
-     if(addmoremember === "yes"){
+
+     .then(function(){
+       if(addmoremembers === "yes"){
          prqu ();
-     }
-     else {
+        }
+        else {
          ///3rd part of html///call function to render final part of the html file
-     }
- })
+        }
+        });
 
+});
 
+});
 
-}
+};
 ///the beginning of the html file///
 function beginningofhtml () {
 const html = `<!DOCTYPE html>
@@ -139,26 +144,28 @@ const html = `<!DOCTYPE html>
 function middleHtml (employee) {
     return new Promise (function ()
     {
-    const employeename = employee.getName();
-    const employeerole = employee.getRole();
-    const employeeid = employee.getId();
-    const employeeemail = employee.getEmail();
-    const employeegithub = employee.getGithub();
-    const employeeofficenumber = employee.getOfficeNumber();
+    const name = employee.getName();
+    const role = employee.getRole();
+    const id = employee.getId();
+    const email = employee.getEmail();
+    const github = employee.getGithub();
+    const officenumber = employee.getOfficeNumber();
+    const school = employee.getSchool();
     let data = ""
     if (role === "Intern") {
+        
     data =          
     ` <div class="col-12 col-sm-6 col-lg-2 mb-3">
     <div class="card">
       <h3 class="card-header" id="date2">
-        Javier Resines,
+        ${name},
         Intern 🎓
       </h3>
       <div class="card-body">
         <p class="card-text">
-          <p id = "id">ID: 1</p>
-          <p id = "email"> Email: javierresines@gmail.com</p>
-          <p id = "school">School: University of thisplace</p>
+          <p id = "id">ID:${id}</p>
+          <p id = "email"> Email: ${email}</p>
+          <p id = "school">School: ${school}}</p>
 
           
         </p>
@@ -175,14 +182,14 @@ function middleHtml (employee) {
    <div class="col-12 col-sm-6 col-lg-2 mb-3">
      <div class="card">
        <h3 class="card-header" id = "date0">
-       Javier Resines,
+       ${name},
        Engineer 👓
        </h3>
        <div class="card-body">
          <p class="card-text">
-           <p id = "id">ID: 1</p>
-           <p id = "email"> Email: javierresines@gmail.com</p>
-           <p id = "Github">github: javierrm</p>
+           <p id = "id">ID:${id}</p>
+           <p id = "email"> Email: ${email}</p>
+           <p id = "Github">github: ${github}</p>
 
 
          </p>
@@ -197,14 +204,14 @@ data =
     `<div class="col-12 col-sm-6 col-lg-2 mb-3">
     <div class="card">
       <h3 class="card-header" id = "date1">
-        Javier Resines,
+        ${name},
         Manager ☕
       </h3>
       <div class="card-body">
         <p class="card-text">
-          <p id = "id">ID: 1</p>
-          <p id = "email"> Email: javierresines@gmail.com</p>
-          <p id = "officenumber">office number: 1</p>
+          <p id = "id">ID:${id}</p>
+          <p id = "email"> Email:${email}</p>
+          <p id = "officenumber">office number:${officenumber}</p>
 
         </p>
 
@@ -218,14 +225,25 @@ data =
 
 }
 
-//function endhtml () {
+function endhtml () {
 
-//data =
-
-
-
-//}
+data = `          </section>
+</div>
 
 
-  prqu () ;
-  //beginningofhtml ();
+
+</section>
+
+
+</body>`
+
+
+
+}
+
+
+
+  prqu ();
+
+
+  

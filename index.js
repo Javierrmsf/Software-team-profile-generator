@@ -9,8 +9,11 @@ const Engineer = require ("./roleclasses/Engineer")
 const Manager = require ("./roleclasses/Manager")
 
 const teammembers =[];
+ function startapplication (){
+  beginningofhtml ();
+  prqu();
 
-  //beginningofhtml ();
+ }
 
 
 function prqu () {
@@ -95,6 +98,7 @@ inquirer
          prqu ();
         }
         else {
+          endhtml()
          ///3rd part of html///call function to render final part of the html file
         }
         });
@@ -104,6 +108,12 @@ inquirer
 });
 
 };
+
+
+
+
+
+
 ///the beginning of the html file///
 function beginningofhtml () {
 const html = `<!DOCTYPE html>
@@ -119,10 +129,7 @@ const html = `<!DOCTYPE html>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark  py-4" id = "blacknavbar">
-        <h2>  </h2>
-     </nav>
- 
+
      <section class="row" id="theblankpart">
         
             <h5>Meet the team:</h5>
@@ -141,16 +148,16 @@ const html = `<!DOCTYPE html>
 
 //the middle of the html file
 
-function middleHtml (employee) {
-    return new Promise (function ()
+function middleHtml (member) {
+    return new Promise (function (resolve, reject)
     {
-    const name = employee.getName();
-    const role = employee.getRole();
-    const id = employee.getId();
-    const email = employee.getEmail();
-    const github = employee.getGithub();
-    const officenumber = employee.getOfficeNumber();
-    const school = employee.getSchool();
+    const name = member.getName();
+    const role = member.getRole();
+    const id = member.getId();
+    const email = member.getEmail();
+    const github = member.getGithub();
+    const officenumber = member.getOfficeNumber();
+    const school = member.getSchool();
     let data = ""
     if (role === "Intern") {
         
@@ -220,6 +227,12 @@ data =
   </div>`
 
    }
+   fs.writeFile("./finalhtml/thefinalfile.html", data, function (err) {
+    if (err) {
+        return reject(err);
+    };
+    return resolve();
+       });
 
     })
 
@@ -235,7 +248,14 @@ data = `          </section>
 </section>
 
 
-</body>`
+</body>`;
+
+fs.appendFile("./finalhtml/thefinalfile.html", html, function (err) {
+  if (err) {
+      console.log(err);
+  };
+});
+console.log("end");
 
 
 
@@ -243,7 +263,7 @@ data = `          </section>
 
 
 
-  prqu ();
+ startapplication ();
 
 
   

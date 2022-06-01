@@ -1,114 +1,101 @@
-const inquirer = require('inquirer');
+const inquirer = require("inquirer");
+const fs = require("fs");
+const Manager = require("./lib/Manager");
+const Intern = require("./lib/Intern");
+const Engineer = require("./lib/Engineer");
+const teammembers = [];
 
-const fs = require('fs');
+function prqu() 
 
-const Intern = require ("./roleclasses/Intern")
-
-const Engineer = require ("./roleclasses/Engineer")
-
-const Manager = require ("./roleclasses/Manager")
-
-const teammembers =[];
- function startapplication (){
-  beginningofhtml ();
-  prqu();
-
- }
-
-
-function prqu () {
-inquirer
-
-
- .prompt([
-    {
-      type: 'input',
-      name: 'name',
-      message: "What is the employee's name?",
-    },
-    {
-      type: 'input',
-      name: 'id',
-      message: "What is the employee's ID?",
-    },
-    {
-    type: 'list',
-    message: "Please select the employee's role",
-    name: 'role',
-    choices: ["Manager", "Engineer", "Intern", ]
-    },
-    {
-    type: 'input',
-    name: 'email',
-    message: "please write the employee's email",
-   },
-   {
-    type: 'input',
-    name: 'github',
-    message: "please write the employee's github (if the employee doesn't have a github skip this question by pressing enter)",
-   },
-   {
-    type: 'input',
-    name: 'office',
-    message: "please write the employee's office number (if the employee doesn't have an office number skip this question by pressing enter)",
-   },
-   
-    
-
-  ])
-
-.then (function({}){
+{
     inquirer
+    
+    .prompt([
+        {
+          type: 'input',
+          name: 'name',
+          message: "What is the employee's name?",
+        },
+        {
+          type: 'input',
+          name: 'id',
+          message: "What is the employee's ID?",
+        },
+        {
+        type: 'list',
+        message: "Please select the employee's role",
+        name: 'role',
+        choices: ["Manager", "Engineer", "Intern", ]
+        },
+        {
+        type: 'input',
+        name: 'email',
+        message: "please write the employee's email",
+       },
+       {
+        type: 'input',
+        name: 'github',
+        message: "if the employee is an engineer, please write the employee's github (if the employee isn't an engineer skip this question by pressing enter)",
+       },
+       {
+        type: 'input',
+        name: 'office',
+        message: "if the employee is a manager, please write the employee's office number (if the employee isn't a manager skip this question by pressing enter)",
+       },
+       {
+        type: 'input',
+        name: 'school',
+        message: "if the employee is an intern, please write the employee's school name ( if the employee isn't an intern skip this question by pressing enter.) "
+
+       }
+
+      ])
+
+    .then(function({name, role, id, email, school, github, office}) {
+        inquirer
     .prompt([
         {
             type: 'list',
-            message: "Will you add another member to the team?",
-            name: 'addmoremembers',
+            message: "are there any other members in the team?",
+            name: 'membersquestion',
             choices: ["yes", "no", ]
            },
     ])
 
+        .then(function({ membersquestion}) {
+            let employee;
+            
+            if (role === "Intern") {
+
+                employee = new Intern(name, id, email, role, school);
+            }
+
+            if (role === "Engineer"){
+                employee = new Engineer(name, id, email, role, github);
+            }
+            
+            if (role === "Manager"){
+                employee = new Manager(name, id, email, role, office);
+            }
 
 
+            teammembers.push(employee);
 
-.then(function({name, id, role, email, github, office,}){
 
-    let employee = ""
-    
-    if (role === "Engineer"){
-        employee = new Engineer(name, id, role, email, github, office)
-    }
-    
-    else if (role === "Manager"){
-        employee = new Manager(name, id, role, email, github, office)
-    }
+            middlehtml(employee)
+            .then(function() {
+                if (membersquestion === "yes") {
+                    prqu();
+                } else {
 
-    else if (role === "Intern"){
-        employee = new Intern(name, id, role, email, github, office)
-    }
-  
-    teammembers.push(employee);
-
-    middleHtml(employee)
-
-   
-
-     .then(function(){
-       if(addmoremembers === "yes"){
-         prqu ();
-        }
-        else {
-          endhtml()
-         ///3rd part of html///call function to render final part of the html file
-        }
+                  
+                    endHtml();
+                }
+            });
+            
         });
-
-});
-
-});
-
-};
-
+    });
+}
 
 
 

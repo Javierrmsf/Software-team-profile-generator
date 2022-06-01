@@ -238,33 +238,24 @@ function middlehtml(employee) {
           if (err) {return reject(err);};
           return resolve();});});
   
-
-function endhtml () {
-
-data = `          </section>
-</div>
-
-
-
-</section>
-
-
-</body>`;
-
-fs.appendFile("./finalhtml/thefinalfile.html", html, function (err) {
-  if (err) {
-      console.log(err);
-  };
-});
-console.log("end");
-
-
-
-}
-
-
-
- startapplication ();
-
+      }
+          function endHtml() {
+            const 
+            html = data = ` </section>
+            </div>
+            
+            
+            
+            </section>
+            
+            
+            </body>`;
+        
+            fs.appendFile("./finalhtml/finalhtml.html", html, function (err) { });
+           
+        }
+        
+        beginninghtml();
+        prqu();
 
   

@@ -133,101 +133,111 @@ function beginninghtml () {
           <section class="row justify-content-around">`;
    
 
-  fs.writeFile("./output/team.html", html, function() {} );
+  fs.writeFile("./finalhtml/finalhtml.html", html, function() {} );
   
 }
 
 //the middle of the html file
 
-function middleHtml (member) {
-    return new Promise (function (resolve, reject)
-    {
-    const name = member.getName();
-    const role = member.getRole();
-    const id = member.getId();
-    const email = member.getEmail();
-    const github = member.getGithub();
-    const officenumber = member.getOfficeNumber();
-    const school = member.getSchool();
-    let data = ""
-    if (role === "Intern") {
-        
-    data =          
-    ` <div class="col-12 col-sm-6 col-lg-2 mb-3">
-    <div class="card">
-      <h3 class="card-header" id="date2">
-        ${name},
-        Intern 🎓
-      </h3>
-      <div class="card-body">
-        <p class="card-text">
-          <p id = "id">ID:${id}</p>
-          <p id = "email"> Email: ${email}</p>
-          <p id = "school">School: ${school}}</p>
+function middlehtml(employee) {
+  return new Promise(function(resolve, reject) {
 
+
+
+      
+      const name = employee.getName();
+      const role = employee.getRole();
+      const id = employee.getId();
+      const email = employee.getEmail();
+      const github = employee.getGithub();
+      const school = employee.getSchool();
+      const office = employee.getOfficeNumber();
+
+      let data = "";
+
+
+
+
+      if (role === "Engineer") {
           
-        </p>
-   
-      </div>
-    </div>
-  </div>`
-    }
-    
-   else if (role === "Engineer") {
-   data = 
-   `          <section class="row justify-content-around">
-  
-   <div class="col-12 col-sm-6 col-lg-2 mb-3">
-     <div class="card">
-       <h3 class="card-header" id = "date0">
-       ${name},
-       Engineer 👓
-       </h3>
-       <div class="card-body">
-         <p class="card-text">
-           <p id = "id">ID:${id}</p>
-           <p id = "email"> Email: ${email}</p>
-           <p id = "Github">github: ${github}</p>
+          data = 
+ `
+
+ <div class="col-12 col-sm-6 col-lg-2 mb-3">
+   <div class="card">
+     <h3 class="card-header" id = "date0">
+     ${name},
+     Engineer 👓
+     </h3>
+     <div class="card-body">
+       <p class="card-text">
+         <p id = "id">ID:${id}</p>
+         <p id = "email"> Email: ${email}</p>
+         <p id = "Github">github: ${github}</p>
 
 
-         </p>
+       </p>
 
-       </div>
      </div>
-   </div>`
-   }
+   </div>
+ </div>`;
 
-   else if (role === "Manager") {
-data =
-    `<div class="col-12 col-sm-6 col-lg-2 mb-3">
-    <div class="card">
-      <h3 class="card-header" id = "date1">
-        ${name},
-        Manager ☕
-      </h3>
-      <div class="card-body">
-        <p class="card-text">
-          <p id = "id">ID:${id}</p>
-          <p id = "email"> Email:${email}</p>
-          <p id = "officenumber">office number:${officenumber}</p>
 
-        </p>
 
-      </div>
+
+
+      } if (role === "Intern") {
+          
+          data =          
+  ` <div class="col-12 col-sm-6 col-lg-2 mb-3">
+  <div class="card">
+    <h3 class="card-header" id="date2">
+      ${name},
+      Intern 🎓
+    </h3>
+    <div class="card-body">
+      <p class="card-text">
+        <p id = "id">ID:${id}</p>
+        <p id = "email"> Email: ${email}</p>
+        <p id = "school">School: ${school}</p>
+
+        
+      </p>
+ 
     </div>
-  </div>`
+  </div>
+</div>`;
 
-   }
-   fs.writeFile("./finalhtml/thefinalfile.html", data, function (err) {
-    if (err) {
-        return reject(err);
-    };
-    return resolve();
-       });
 
-    })
 
-}
+
+      } if (role === "Manager") {
+          
+          data =
+          `<div class="col-12 col-sm-6 col-lg-2 mb-3">
+          <div class="card">
+            <h3 class="card-header" id = "date1">
+              ${name},
+              Manager ☕
+            </h3>
+            <div class="card-body">
+              <p class="card-text">
+                <p id = "id">ID:${id}</p>
+                <p id = "email"> Email:${email}</p>
+                <p id = "officenumber">office number:${office}</p>
+      
+              </p>
+      
+            </div>
+          </div>
+        </div>`
+      }
+
+      
+      fs.appendFile("./finalhtml/finalhtml.html", data, function (err) {
+          if (err) {return reject(err);};
+          return resolve();});});
+  
 
 function endhtml () {
 

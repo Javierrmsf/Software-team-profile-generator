@@ -1,6 +1,6 @@
-# Team Profile Generator
+# Software team profile generator
 
-- [Team Profile Generator](#team-profile-generator)
+- [Software team profile generator](#software-team-profile-generator)
   - [Description](#description)
   - [Installation](#installation)
   - [Test](#test)

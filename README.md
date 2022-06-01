@@ -1,9 +1,5 @@
 # Team Profile Generator
 
-- [Description](#description)
-
-- [Installation](#installation)
-
 - [Team Profile Generator](#team-profile-generator)
   - [Description](#description)
   - [Installation](#installation)

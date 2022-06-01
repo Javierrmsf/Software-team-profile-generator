@@ -4,7 +4,10 @@
 
 - [Installation](#installation)
 
-- [Test](#test)
+- [Team Profile Generator](#team-profile-generator)
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Test](#test)
 
 - [Questions](#questions)
 
@@ -35,9 +38,7 @@ before running the application it is necessary to install the inquirer and jest 
 
 To tun the test, after installing the packages type: npm test in the integrated terminal
 
-## Questions
-My Github account is: javierrmsf
-If you have any questions please contact me at:javierresines@gmail.com
+
 
 
 

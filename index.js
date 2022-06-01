@@ -102,35 +102,39 @@ function prqu()
 
 
 ///the beginning of the html file///
-function beginningofhtml () {
-const html = `<!DOCTYPE html>
-<html>
+function beginninghtml () {
 
-<head>
-  <meta charset="utf-8">
-  <title></title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style.css">
 
-</head>
+  const html = `<!DOCTYPE html>
+  <html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+  
+  </head>
+  
+  <body>
 
-<body>
-
-     <section class="row" id="theblankpart">
+   
+       <section class="row" id="theblankpart">
+          
+              <h5>Meet the team:</h5>
         
-            <h5>Meet the team:</h5>
-      
+  
+      </section>
+  
+      <section class="row">
+  
+          <div class="col-12 col-md-12"> 
+          <section class="row justify-content-around">`;
+   
 
-    </section>
-
-    <section class="row">
-
-        <div class="col-12 col-md-12"> `;
-        
-
-    fs.writeFile('./finalhtml/teamgenerator.html', html )
-
+  fs.writeFile("./output/team.html", html, function() {} );
+  
 }
 
 //the middle of the html file
